@@ -5,6 +5,7 @@ import Home from '../src/components/pages/Home'
 import Navbar from './components/Navbar';
 import Journal from './components/pages/Journal';
 import Footer from './components/Footer';
+import Bible from './components/pages/Bible';
 
 //Creating code
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path='/' exact Component = {Home}/>
         <Route path='/journal' exact Component={Journal} />
+        <Route path='/bible' exact Component={Bible} />
       </Routes>
       <Footer />
     </Router>
