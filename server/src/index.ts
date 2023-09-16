@@ -17,6 +17,7 @@ connectToDatabase(); // Call the async function to connect
 // Schemas
 const journalModel = mongoose.model('journals', { date: String, text: String });
 const prayerModel = mongoose.model('prayers', { title: String, date: String, text: String });
+const memoryScriptureModel = mongoose.model('memoryScriptures', { book: String, chapter: String, startVerse: String, endVerse: String, text: String });
 
 
 
@@ -125,6 +126,74 @@ const app = new Elysia()
 		return { error: "Failed to delete prayer" }; // Handle the error
 	}
 })
+
+	
+	//Start Memory Scripture routes
+
+.get("/memoryScripture", async () => {
+	try {
+	// Use the Mongoose model to find all memory Scriptures
+		const memoryScriptures = await memoryScriptureModel.find();
+		return memoryScriptures; // Return the memory Scriptures  as a response
+	}
+	catch (error) { console.error("Error retrieving memory Scripture:", error);
+	return { error: "Failed to retrieve memory scriptures" }; } // Handle the error 
+})
+
+.post('/memoryScripture', ({ body }) => {
+	const memoryScripture = new memoryScriptureModel(body);
+	memoryScripture.save().then(() => console.log("Saved Memory Scripture Entry"));
+})
+	
+.put('/prayer/:id', async ({ params, body }) => {
+	try {
+		// Use the Mongoose model to update the Prayer by ID
+		const updatedPrayer = await prayerModel.findByIdAndUpdate(params.id, body, { new: true });
+
+		if (!updatedPrayer) { 
+			return { error: "Prayer not found" }; 
+		} // Handle the case where the prayer is not found
+
+		console.log("Prayer updated successfully");
+		return updatedPrayer; // Return the updated Prayer as a response
+	}
+	catch (error) { console.error("Error updating prayer:", error);
+	return { error: "Failed to update prayer" }; } // Handle the error
+})
+	
+.put('/memoryScripture/:id', async ({ params, body }) => {
+	try {
+		// Use the Mongoose model to update the Prayer by ID
+		const updatedMemoryScripture = await memoryScriptureModel.findByIdAndUpdate(params.id, body, { new: true });
+
+		if (!updatedMemoryScripture) { 
+			return { error: "Memory Scripture not found" }; 
+		} // Handle the case where the memory scripture is not found
+
+		console.log("Memory Scripture updated successfully");
+		return updatedMemoryScripture; // Return the updated Memory Scripture as a response
+	}
+	catch (error) { console.error("Error updating memory scripture:", error);
+	return { error: "Failed to update memory scripture" }; } // Handle the error
+})
+
+.delete('/memoryScripture/:id', async ({ params }) => {
+	try {
+		// Use the Mongoose model to find and delete the journal entry by ID
+		const deletedMemoryScripture = await memoryScriptureModel.findByIdAndRemove(params.id);
+		if (!deletedMemoryScripture) {
+			return { error: "Memory Scripture not found" }; // Handle the case where the memory scripture is not found
+		}
+
+		console.log("Memory Scripture deleted successfully:");
+		return { message: "Memory Scripture deleted successfully" }; // Return a success message
+		}
+
+	catch (error) { 
+		console.error("Error deleting Memory Scripture:", error);
+		return { error: "Failed to delete memory scripture" }; // Handle the error
+	}
+})	
 
 .get('/api2', () => 'Test Elysia')
 
