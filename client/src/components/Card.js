@@ -9,8 +9,11 @@ import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function Dashbaord(props) {
+
+
+
     return (
-        <Link to={props.path} className='link'>
+        <Link to={props.path} className='link' style={{textDecoration:'none'}}>
             <Card sx={{ maxWidth: 300}} xs={12} sm={10} md={8} lg={6}  >
                 <CardActionArea>
                     <CardMedia
@@ -25,7 +28,7 @@ export default function Dashbaord(props) {
                         <Typography gutterBottom variant="h5" component="div">
                             {props.title}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary" >
+                        <Typography variant="body2">
                             {props.description}
                         </Typography>
                     </CardContent>

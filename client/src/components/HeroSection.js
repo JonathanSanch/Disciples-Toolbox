@@ -7,7 +7,7 @@ import sermonImg from "../images/sermons.jpg"
 import prayerImg from "../images/prayer.jpg"
 import journalImg from "../images/journal.jpg"
 import Grid from "@mui/material/Grid"
-import { Typography } from '@mui/material'
+import { Paper, Typography } from '@mui/material'
 import { useState, useEffect } from 'react'
 import { Box, ThemeProvider, createTheme } from '@mui/system';
 import Card from './Card'
@@ -39,20 +39,8 @@ function HeroSection() {
         <Container maxWidth= "xl">
               <Grid container spacing={2} className='verse_container'>
             <Grid item xs={12}  md={5} >
-                <ThemeProvider>
-                <Box sx={{
-                        width: 500,
-                        padding: '30px',
-                        paddingTop: "215px",
-                        paddingLeft:"100px",
-                        color: '#cad2c5',
-                        alignItems: "center",
-                        '&:hover':{
-                            backgroundColor:"primary.light",
-                        },
-                        justifyContent:"center"
-                    }}>
-                        <Typography variant='h4' textAlign="center" style={typographyStyle}>
+                <Paper style={{ padding: "40px", backgroundColor: "#3B6064", color:'#CAD2C5', marginTop:'175px'}} elevation={6}>
+                <Typography variant='h4' textAlign="center" style={typographyStyle}>
                             Verse of the Day:
                         </Typography>
                         <Typography variant='h6' marginTop='15px'>
@@ -71,8 +59,7 @@ function HeroSection() {
                             )}
                           </div>
                         </Typography>
-                    </Box>
-                </ThemeProvider>
+                </Paper>
             </Grid>
             <Grid item xs={12} md={4}  className="verse_container">
                 <Box sx={{

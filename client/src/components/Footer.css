@@ -2,7 +2,7 @@
     color: #879fa8;
     font-family: "Roboto Condensed", 'Trebuchet MS', Arial, sans-serif;
     font-size: 25px;
-    margin-top: 3px;
+
     padding-bottom: 10px;
     margin-left: 10px;
     text-decoration: none;
@@ -11,4 +11,15 @@
 
 #title_link {
     margin-top: 10px;
+}
+
+.foot{
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.Footer{
+    display: flex;
+flex-direction: column;
+min-height: 100vh; 
 }
