@@ -26,7 +26,7 @@ const app = new Elysia()
 
 
 // Start Journal Routes
-.get("/journal", async () => {
+.get("/journals", async () => {
 	try {
 	// Use the Mongoose model to find all journal entries
 		const journals = await journalModel.find();
@@ -36,12 +36,12 @@ const app = new Elysia()
 	return { error: "Failed to retrieve journal entries" }; } // Handle the error 
 })
 
-.post('/journal', ({ body }) => {
+.post('/journals', ({ body }) => {
 	const journal = new journalModel(body);
 	journal.save().then(() => console.log("Saved Journal Entry"));
 })
 
-.put('/journal/:id', async ({ params, body }) => {
+.put('/journals/:id', async ({ params, body }) => {
 	try {
 		// Use the Mongoose model to update the journal entry by ID
 		const updatedJournal = await journalModel.findByIdAndUpdate(params.id, body, { new: true });
@@ -57,7 +57,7 @@ const app = new Elysia()
 	return { error: "Failed to update journal entry" }; } // Handle the error
 })
 
-.delete('/journal/:id', async ({ params }) => {
+.delete('/journals/:id', async ({ params }) => {
 	try {
 		// Use the Mongoose model to find and delete the journal entry by ID
 		const deletedJournal = await journalModel.findByIdAndRemove(params.id);
