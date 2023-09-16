@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&family=Ysabeau:wght@100&display=swap");
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+:root{
+    --mainColor: #152026;
+    --mainColorLight: #cad2c5;
+}
+
+#title-link {
+    text-decoration: none;
+}
+
+.title-elements {
+    margin-right: 13px;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 2rem;
+    background-color: var(--mainColor);
+}
+
+#par{
+    margin: 0 2rem;
+    color: '#f3e46';
+    text-decoration: none;
+}
+
+
+#disciples-toolbox {
+    color: #cad2c5;
+    font-family: "Fugaz One", 'Trebuchet MS', Arial, sans-serif;
+    font-size: 35px;
+    margin-top: 6px;
+    text-decoration: none;
+}
+
+h2 {
+    color: #cad2c5;
+    font-style: normal;
+    font-size: 1em;
+    font-family: "Roboto Condensed", 'Trebuchet MS', Arial, sans-serif;
+}
+
+.element {
+    display: inline-block;
+    margin-left: 25px;
+    margin-right: 05px;
+}
+
+.bigger-element {
+    display: inline-block;
+    border-color: black;
+    border-style: solid;
+
+    height: 55px;
+}
+
+#title-box {
+    width: 500px;
+}
+
+#date-box {
+    width: 300px;
+}
+
+#bun-box {
+    width: 200px;
+}
+
+.navbar-container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    padding-left: 1%;
+    height: 85px;
+    background-color: #192a33;
+}

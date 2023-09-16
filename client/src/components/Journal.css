@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&family=Ysabeau:wght@100&display=swap');
+
+#title{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Titillium Web', sans-serif !important;
+    font-family: 'Ysabeau', sans-serif !important;
+    color: black;
+}

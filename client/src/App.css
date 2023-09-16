@@ -5,6 +5,10 @@
   font-family: 'PT Sans', sans-serif;
 }
 
+body {
+  background-color: #2f3e46;
+}
+
 .home {
   display: flex;
   height: 90vh;
