@@ -3,7 +3,7 @@ import { Elysia } from "elysia";
 const mongoose = require('mongoose')
 async function connectToDatabase() {
 try {
-	await mongoose.connect('mongodb+srv://root:vt7U3ryxp65rCPOB@urmom.csfuk15.mongodb.net/', { // put this in env maybe later
+	await mongoose.connect(`${Bun.env.dbKey}`, { // put this in env maybe later
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		dbName: 'toolbox'
