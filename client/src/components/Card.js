@@ -9,6 +9,12 @@ import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function Dashbaord(props) {
+
+    // const typographyStyle = {
+    //     color: red,
+    //     fontFamily: 'Fugaz One', 
+    // };
+
     return (
         <Link to={props.path} className='link'>
             <Card sx={{ maxWidth: 300}} xs={12} sm={10} md={8} lg={6}  >
