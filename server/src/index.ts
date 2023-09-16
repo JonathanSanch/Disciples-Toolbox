@@ -86,11 +86,4 @@ const app = new Elysia()
 .listen(5000);
 
 
-console.log(
-<<<<<<< Updated upstream
-  `Backend Server is running at ${app.server?.hostname}:${app.server?.port}`
-);
-=======
-`Backend Server is running at ${app.server?.hostname}:${app.server?.port}`
-);
->>>>>>> Stashed changes
+console.log(`Backend Server is running at ${app.server?.hostname}:${app.server?.port}`);
