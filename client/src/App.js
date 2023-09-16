@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Journal from './components/pages/Journal';
 import Footer from './components/Footer';
 import Bible from './components/pages/Bible';
+import Memory from './components/pages/Memory';
 
 //Creating code
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' exact Component = {Home}/>
         <Route path='/journal' exact Component={Journal} />
         <Route path='/bible' exact Component={Bible} />
+        <Route path='/memory' exact Component={Memory} />
       </Routes>
       <Footer />
     </Router>
