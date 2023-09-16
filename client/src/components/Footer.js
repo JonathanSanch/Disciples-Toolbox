@@ -32,7 +32,7 @@ function Footer() {
   };
 
   return (
-    <header>
+    <header id="foot">
         <Link to='/' className='link' id="title_link" style={{display: 'flex', alignItems: 'center', textDecoration:'none'}}>
         <Typography variant='h5'>
         <i class="fa-brands fa-github" style={iconStyle}></i>

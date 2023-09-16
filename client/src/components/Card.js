@@ -10,19 +10,6 @@ import { Link } from 'react-router-dom';
 
 export default function Dashbaord(props) {
 
-    const headerStyle = {
-        fontFamily: 'Fugaz One',
-        color: '#2f3e46',         
-    };
-
-    const descStyle = {
-        fontFamily: 'Roboto Condensed',
-        color: '#2f3e46',
-    };
-
-    const cardStyle = {
-        backgroundColor: '#879fa8',
-    }
 
 
     return (
