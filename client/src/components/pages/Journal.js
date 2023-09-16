@@ -60,17 +60,16 @@ function Journal() {
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
         <Button
-              variant="contained"
-              color="success"
-              size="large"
-              style={{ marginTop: '10px' }}
-              fullWidth
-              onClick={createJournalEntry}
-                >
-                {(create == true) ? ( <>Create Your Journal</>): (<>Edit Your Journal</>)}
-              
-            </Button>
-          <Paper style={{ padding: '20px' , backgroundColor:"#CAD2C5"}}>
+            variant="contained"
+            color="success"
+            size="large"
+            style={{ marginTop: '10px' }}
+            fullWidth
+            onClick={createJournalEntry}>
+            {(create === true) ? ( <>Create Your Journal</>): (<>Edit Your Journal</>)}
+        </Button>
+
+        <Paper style={{ padding: '20px' , backgroundColor:"#CAD2C5"}}>
             <Typography variant='h4'>{currentDateString}</Typography>
             <TextField
               fullWidth
@@ -82,7 +81,7 @@ function Journal() {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
             />
-          </Paper>
+        </Paper>
         </Grid>
         <Grid item xs={12} md={4}>
           <Paper style={{ padding: '20px' , backgroundColor:"#CAD2C5", marginBottom: "20px"}}>
