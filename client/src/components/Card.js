@@ -24,11 +24,11 @@ export default function Dashbaord(props) {
                         sx={{width: 250}}
 
                     />
-                    <CardContent style={cardStyle}>
-                        <Typography gutterBottom variant="h5" component="div" style={headerStyle}>
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
                             {props.title}
                         </Typography>
-                        <Typography variant="body2" style={headerStyle}>
+                        <Typography variant="body2">
                             {props.description}
                         </Typography>
                     </CardContent>
