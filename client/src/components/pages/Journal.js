@@ -26,8 +26,8 @@ function Journal() {
       }
 
       //Getting Date
-      const currentDate = new Date();
-      const currentDateString = currentDate.toLocaleDateString(undefined);
+    const currentDate = new Date();
+    const currentDateString = currentDate.toLocaleDateString(undefined);
 
     const [journals, setJournals] = useState([{}]);
     useEffect(() => {
@@ -44,12 +44,14 @@ function Journal() {
     const [create, setCreate] = useState(true);
     const createJournalEntry = () => {
         if (create) {
-            if (inputValue.trim() !== '') {
-                // Check if the input value is not empty
-                setItems([...items, inputValue]); // Append the input value to the list
-                setInputValue(''); // Clear the input field
-                setCreate(!create)
-            }
+            setItems([...items, inputValue]); // Append the input value to the list
+            setInputValue(''); // Clear the input field
+            setCreate(!create)
+
+            // post to the db
+        }
+        else {
+            // put to the db to update currently open note
         }
     };
 
