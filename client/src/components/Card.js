@@ -9,8 +9,24 @@ import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function Dashbaord(props) {
+
+    const headerStyle = {
+        fontFamily: 'Fugaz One',
+        color: '#2f3e46',         
+    };
+
+    const descStyle = {
+        fontFamily: 'Roboto Condensed',
+        color: '#2f3e46',
+    };
+
+    const cardStyle = {
+        backgroundColor: '#879fa8',
+    }
+
+
     return (
-        <Link to={props.path} className='link'>
+        <Link to={props.path} className='link' style={{textDecoration:'none'}}>
             <Card sx={{ maxWidth: 300}} xs={12} sm={10} md={8} lg={6}  >
                 <CardActionArea>
                     <CardMedia
@@ -21,11 +37,11 @@ export default function Dashbaord(props) {
                         sx={{width: 250}}
 
                     />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
+                    <CardContent style={cardStyle}>
+                        <Typography gutterBottom variant="h5" component="div" style={headerStyle}>
                             {props.title}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary" >
+                        <Typography variant="body2" style={headerStyle}>
                             {props.description}
                         </Typography>
                     </CardContent>
