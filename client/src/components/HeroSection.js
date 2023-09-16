@@ -27,9 +27,17 @@ function HeroSection() {
         )
     }, [options])
 
+    const typographyStyle = {
+      fontFamily: 'Fugaz One', // Replace with your selected font family
+    };
+
+    const verseStyle = {
+      fontStyle: 'italic',
+    }
+
     return (
         <Container maxWidth= "xl">
-            <Grid container spacing={2} className='verse_container'>
+              <Grid container spacing={2} className='verse_container'>
             <Grid item xs={12}  md={5} >
                 <ThemeProvider>
                 <Box sx={{
@@ -44,15 +52,15 @@ function HeroSection() {
                         },
                         justifyContent:"center"
                     }}>
-                        <Typography variant='h4' textAlign="center">
+                        <Typography variant='h4' textAlign="center" style={typographyStyle}>
                             Verse of the Day:
                         </Typography>
-                        <Typography variant='h6'>
+                        <Typography variant='h6' marginTop='15px'>
                           <div>
                             {(typeof verseOtd.verse === 'undefined') ? (
                               <p></p>
                             ): (
-                              <p>{verseOtd.verse.details.text}</p>
+                              <p style={verseStyle}>{verseOtd.verse.details.text}</p>
                             )}
                           </div>
                           <div>
@@ -72,7 +80,7 @@ function HeroSection() {
                     padding: "20px",
                     color: "#CAD2C5",
                 }}>
-                <Typography variant='h4' textAlign="center" marginBottom="20px">Bible Dashbaord</Typography>
+                <Typography variant='h4' textAlign="center" marginBottom="20px" style={typographyStyle}>Bible Dashboard</Typography>
                 <Box display="flex" justifyContent="space-around" marginBottom="50px" xs={12} sm={10} md={8} lg={6}>
                 <Card image={bibleImg} alt="Bible image" title= "Bible" description="Explore our awesome Bible API"/>
                 <Card image={sermonImg} alt="Sermon image" title= "Sermon" description="Explore our awesome sermons!"/>

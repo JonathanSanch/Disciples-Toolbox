@@ -3,6 +3,7 @@ import { Container, Grid, Paper, TextField, Button, List, ListItem, ListItemButt
 import { useState, useEffect } from 'react'
 import {IconButton} from '@mui/material'
 import {Delete} from '@mui/icons-material'
+
 import "../Journal.css"
 
 
@@ -17,18 +18,19 @@ function Journal() {
           setInputValue(''); // Clear the input field
         }
       };
+    
+      const handleDelete = (deleteJournal) => {
 
+        const updatedItems = items.filter((item, index) => index !== deleteJournal);
+        setItems(updatedItems);
+      }
 
       //Getting Date
-      function getDate(){
-        const today = new Date();
-        const month = today.getMonth() + 1;
-        const year = today.getFullYear();
-        const date = today.getDate();
-        return `${month} ${date}, ${year}`
-      }
-  return (
+      const currentDate = new Date();
+      const currentDateString = currentDate.toLocaleDateString(undefined);
 
+  return (
+    
     <Container maxWidth="xl">
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
@@ -43,7 +45,7 @@ function Journal() {
               Create Your Journal
             </Button>
           <Paper style={{ padding: '20px' , backgroundColor:"#CAD2C5"}}>
-
+            <Typography variant='h4'>{currentDateString}</Typography>
             <TextField
               fullWidth
               label="Journal Entry"
@@ -66,7 +68,7 @@ function Journal() {
                 <ListItemButton primary="Log 1" secondary="Date: September 1, 2023" variant="outlined">
                     <ListItemText primary={item}  />
                 </ListItemButton>
-                <IconButton edge="end" aria-label="comments">
+                <IconButton edge="end" aria-label="comments" onClick={() => handleDelete(index)}>
                     <Delete />
                 </IconButton>
                 </ListItem>
