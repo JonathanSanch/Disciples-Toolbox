@@ -1,0 +1,14 @@
+.thing {
+    color: #879fa8;
+    font-family: "Roboto Condensed", 'Trebuchet MS', Arial, sans-serif;
+    font-size: 25px;
+    margin-top: 3px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#title_link {
+    margin-top: 10px;
+}
