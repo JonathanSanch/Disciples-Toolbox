@@ -29,6 +29,31 @@ function Journal() {
       const currentDate = new Date();
       const currentDateString = currentDate.toLocaleDateString(undefined);
 
+    const [journals, setJournals] = useState([{}]);
+    useEffect(() => {
+    fetch("/journals").then(
+        response => response.json()
+    ).then(
+        data => {
+        setJournals(data)
+        }
+    )
+    }, [])
+
+
+    const [create, setCreate] = useState(true);
+    const createJournalEntry = () => {
+        if (create) {
+            if (inputValue.trim() !== '') {
+                // Check if the input value is not empty
+                setItems([...items, inputValue]); // Append the input value to the list
+                setInputValue(''); // Clear the input field
+                setCreate(!create)
+            }
+        }
+    };
+
+
   return (
     
     <Container maxWidth="xl">
@@ -40,9 +65,10 @@ function Journal() {
               size="large"
               style={{ marginTop: '10px' }}
               fullWidth
-              onClick={addItemToList}
+              onClick={createJournalEntry}
                 >
-              Create Your Journal
+                {(create == true) ? ( <>Create Your Journal</>): (<>Edit Your Journal</>)}
+              
             </Button>
           <Paper style={{ padding: '20px' , backgroundColor:"#CAD2C5"}}>
             <Typography variant='h4'>{currentDateString}</Typography>
@@ -59,22 +85,17 @@ function Journal() {
           </Paper>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Paper style={{ padding: '20px' , backgroundColor:"#CAD2C5"}}>
-
+          <Paper style={{ padding: '20px' , backgroundColor:"#CAD2C5", marginBottom: "20px"}}>
             <Typography id='title' variant='h2' textAlign="center" color="black">Journal Entries</Typography>
-            <List>
-            {items.map((item, index) => (
-                <ListItem key={index}>
-                <ListItemButton primary="Log 1" secondary="Date: September 1, 2023" variant="outlined">
-                    <ListItemText primary={item}  />
-                </ListItemButton>
-                <IconButton edge="end" aria-label="comments" onClick={() => handleDelete(index)}>
-                    <Delete />
-                </IconButton>
-                </ListItem>
-              ))}
-              {/* Add more log items as needed */}
-            </List>
+            {(typeof journals === 'undefined') ? (
+                <p></p>
+            ): (
+                <ul>
+                    {journals.map((item, index) => (
+                        <Button><li key={index}>{item.date}</li></Button> // Replace "name" with the key in your API response
+                    ))}
+                </ul>
+            )}
           </Paper>
         </Grid>
       </Grid>
