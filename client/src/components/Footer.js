@@ -1,8 +1,9 @@
 import React from 'react'
 import './Footer.css';
 import {Link} from 'react-router-dom'
-import { Typography } from '@mui/material'
+import { Typography, Paper } from '@mui/material'
 import { useState, useEffect } from 'react';
+
 
 function Footer() {
   const iconStyle = {
@@ -32,8 +33,8 @@ function Footer() {
   };
 
   return (
-    <header id="foot">
-        <Link to='/' className='link' id="title_link" style={{display: 'flex', alignItems: 'center', textDecoration:'none'}}>
+    <header id="foot" style={{marginTop: 'auto'}}>
+      <Link to='/' className='link' id="title_link" style={{display: 'flex', alignItems: 'center', textDecoration:'none'}}>
         <Typography variant='h5'>
         <i class="fa-brands fa-github" style={iconStyle}></i>
           <Typography class="thing" style={titleStyle}>Github</Typography>
@@ -57,6 +58,7 @@ function Footer() {
           <Typography class="thing" style={titleStyle}>Linkedin</Typography>
           </Typography>
         </Link>
+        
         {/*
         <Typography variant='p' className='par'>
           <h2>{currentDateString}</h2>
