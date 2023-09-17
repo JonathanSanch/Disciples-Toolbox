@@ -43,12 +43,12 @@ function Journal() {
                 throw new Error("Failed to add journal entry");
                 }
                 console.log("Journal entry added successfully");
-                setCreate(!create);
+                setInputValue('');
+                getJournals();
             })
             .catch((error) => {
                 console.error("Error adding journal entry:", error);
             });
-            getJournals()
         }
     }
 
