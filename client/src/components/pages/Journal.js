@@ -82,9 +82,24 @@ function Journal() {
         getJournals();
     }
 
-    const deleteJournalEntry = () => {
-        
-    }
+    const deleteJournalEntry = (id) => {
+        const instanceId = id;
+  
+        // Send the DELETE request
+        fetch(`/journals/${instanceId}`, {
+            method: "DELETE",
+            params: instanceId
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Failed to delete journal entry");
+            }
+            console.log("Journal entry deleted successfully");
+        })
+        .catch((error) => {
+            console.error("Error deleting journal entry:", error);
+        });
+    };
 
   return (
     <Container maxWidth="xl">
