@@ -13,6 +13,7 @@ function Memory() {
 
   const typographyStyle = {
     fontFamily: 'Fugaz One', // Replace with your selected font family
+    marginBottom: '10px',
   };
 
   const verseStyle = {
@@ -25,7 +26,7 @@ function Memory() {
     <Grid container spacing={2}>
       {/* Left Column */}
       <Grid item xs={12} md={6}>
-        <Paper style={{ padding: "40px", backgroundColor: "#594157", color:'#d0a4eb', margin:'45px'}} elevation={6}>
+        <Paper style={{ minHeight:'200px', borderRadius:'10px', padding: "40px", backgroundColor: "#594157", color:'#d0a4eb', margin:'45px'}} elevation={6}>
           <Typography variant='h4' textAlign="center" style={typographyStyle}>
               Memory Scripture:
           </Typography>
@@ -46,13 +47,15 @@ function Memory() {
       </Grid>
     {/* Right Column */}
       <Grid item xs={12} md={6}>
-        <Paper elevation={3} style={{ padding: '40px', margin: '45px' }}>
+        <Paper elevation={3} style={{ minHeight:'200px', borderRadius:'10px', backgroundColor:'#d0a4eb', color:'#594157', padding: '40px', margin: '45px' }}>
           <Typography variant='h4' textAlign="center" style={typographyStyle}>
               Saved List:
+              <button class="cool-button-2">Clear list</button>
           </Typography> 
           <Grid container spacing={2}>
-            <Listbox message="hi"/>
-            <Listbox message="is there anybody out there?"/>
+            <Listbox verseMessage="Trust in the Lord with all your heart, and 
+            lean not on your own understanding." verseIndex="Proverbs 3:5"/>
+            <Listbox verseMessage="Jesus wept." verseIndex="idk"/>
           </Grid>
         </Paper>
       </Grid>

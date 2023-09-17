@@ -18,8 +18,10 @@ function Journal() {
         fetch("/journals").then(
             response => response.json()
         ).then(
+            
             data => {
             setJournals(data)
+            console.log(data)
             }
         )
     }
@@ -142,13 +144,13 @@ function Journal() {
                 <ul className='journalEntries'>
                     {journals.map((item, index) => (
                         <li key={index}>
-                            <Container>
+                        <Container>
                             <ListItemButton className='listButton' style={{ display: 'flex', alignItems: 'flex-start' }} disableGutters="true" onClick={() => loadJournalEntry(index, item._id)}> {item.date} 
                         </ListItemButton>
                         <IconButton edge="end" aria-label="comments" >
-                        <Delete />
+                            <Delete />
                         </IconButton>
-                            </Container>
+                        </Container>
                       </li>
                     ))}
                 </ul>

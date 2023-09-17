@@ -73,7 +73,7 @@ function HeroSection() {
                 <Card image={sermonImg} alt="Memory Scriptures image" title= "Memory Scripture" description="Keep the Word in your heart" path='/memory'/>
                 </Box>
                 <Box display="flex" justifyContent="space-around"xs={12} sm={10} md={8} lg={6}>
-                <Card image={prayerImg} alt="Prayer image" title= "Prayer" description="Join with us in prayer."/>
+                <Card image={prayerImg} alt="Prayer image" title= "Prayer" description="Join with us in prayer." path='/prayer'/>
                 <Card image={journalImg} alt="Journal image" title= "Journal" description="Jot down your thoughts" path='/journal'/>
                 </Box>
                 </Box>
