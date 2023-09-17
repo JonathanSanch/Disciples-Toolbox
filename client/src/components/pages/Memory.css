@@ -1,3 +1,38 @@
 .two-column-grid {
     margin: 0 0px; 
 }
+
+/* Basic button styling */
+.cool-button {
+
+
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* Hover effect */
+  .cool-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+  }
+  
+  /* Focus (keyboard navigation) effect */
+  .cool-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
+  }
+  
+  /* Active (click) effect */
+  .cool-button:active {
+    transform: scale(0.95);
+  }
+  
+  
+  

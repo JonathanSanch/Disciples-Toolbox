@@ -1,30 +1,15 @@
 import React from 'react'
 import '../../App.css'
 import Container from '@mui/material/Container'
-// import Box from "@mui/material/Box"
-import bibleImg from "../../images/bible.jpg"
-import sermonImg from "../../images/sermons.jpg"
-import prayerImg from "../../images/prayer.jpg"
-import journalImg from "../../images/journal.jpg"
 import Grid from "@mui/material/Grid"
 import { Paper, Typography } from '@mui/material'
 import { useState, useEffect } from 'react'
 import { Box, ThemeProvider, createTheme } from '@mui/system';
-import Card from '../Card'
+import './Memory.css';
+import Listbox from '../Listbox.js';
+import Card from '../Card.js';
 
 function Memory() {
-  const options = { method: 'GET', headers: { accept: 'application/json' } };
-  const [verseOtd, setVerseOtd] = useState([{}])
-
-  useEffect(() => {
-      fetch("https://beta.ourmanna.com/api/v1/get?format=json&order=daily").then(
-          response => response.json()
-      ).then(
-          data => {
-              setVerseOtd(data)
-          }
-      )
-  }, [options])
 
   const typographyStyle = {
     fontFamily: 'Fugaz One', // Replace with your selected font family
@@ -32,45 +17,45 @@ function Memory() {
 
   const verseStyle = {
     fontStyle: 'italic',
+    marginBottom: '15px',
   }
 
   return (
-      <Container maxWidth= "xl">
-            <Grid container spacing={2} className='verse_container'>
-          <Grid item xs={12}  md={5} >
-              <Paper style={{ padding: "40px", backgroundColor: "#3B6064", color:'#CAD2C5', marginTop:'175px'}} elevation={6}>
-              <Typography variant='h4' textAlign="center" style={typographyStyle}>
-                          Memory Scripture:
-                      </Typography>
-                      <Typography variant='h6' marginTop='15px'>
-                        <div>
-                          <p style={verseStyle}>memory scripture here</p>
-                        </div>
-                        <div>
-                          <p>scripture details</p>
-                        </div>
-                      </Typography>
-              </Paper>
-          </Grid>
-          <Grid item xs={12} md={4}  className="verse_container">
-              <Box sx={{
-                  width: 800,
-                  padding: "20px",
-                  color: "#CAD2C5",
-              }}>
-              <Typography variant='h4' textAlign="center" marginBottom="20px" style={typographyStyle}>Bible Dashboard</Typography>
-              <Box display="flex" justifyContent="space-around" marginBottom="50px" xs={12} sm={10} md={8} lg={6}>
-              <Card image={bibleImg} alt="Bible image" title= "Bible" description="Explore our awesome Bible API" path='/bible'/>
-              <Card image={sermonImg} alt="Memory Scriptures image" title= "Memory Scriptures" description="Keep the Word in your heart" path='/memory'/>
-              </Box>
-              <Box display="flex" justifyContent="space-around"xs={12} sm={10} md={8} lg={6}>
-              <Card image={prayerImg} alt="Prayer image" title= "Prayer" description="Join with us in prayer."/>
-              <Card image={journalImg} alt="Journal image" title= "Journal" description="Take notes about your life." path='/journal'/>
-              </Box>
-              </Box>
-          </Grid>
+
+    <Grid container spacing={2}>
+      {/* Left Column */}
+      <Grid item xs={12} md={6}>
+        <Paper style={{ padding: "40px", backgroundColor: "#594157", color:'#d0a4eb', margin:'45px'}} elevation={6}>
+          <Typography variant='h4' textAlign="center" style={typographyStyle}>
+              Memory Scripture:
+          </Typography>
+          <Typography variant='h6' marginTop='15px'>
+            <div>
+              <p style={verseStyle}>All glory to God, who is able, through His mighty power at work within us, to accomplish
+              infintely more than we might ask or think.</p>
+            </div>
+            <div style={{marginBottom:'15px'}}>
+              <p>Ephesians 3:20 NLT</p>
+            </div>
+          </Typography>
+          <Typography style={{textAlign: 'center'}}>
+            <button class="cool-button">New Scripture</button>
+          </Typography>
+        </Paper>
       </Grid>
-      </Container>
+    {/* Right Column */}
+      <Grid item xs={12} md={6}>
+        <Paper elevation={3} style={{ padding: '40px', margin: '45px' }}>
+          <Typography variant='h4' textAlign="center" style={typographyStyle}>
+              Saved List:
+          </Typography> 
+          <Grid container spacing={2}>
+            <Listbox message="hi"/>
+            <Listbox message="is there anybody out there?"/>
+          </Grid>
+        </Paper>
+      </Grid>
+    </Grid>
 
   )
 }

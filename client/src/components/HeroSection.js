@@ -39,7 +39,7 @@ function HeroSection() {
         <Container maxWidth= "xl">
               <Grid container spacing={2} className='verse_container'>
             <Grid item xs={12}  md={5} >
-                <Paper style={{ padding: "40px", backgroundColor: "#3B6064", color:'#CAD2C5', marginTop:'175px'}} elevation={6}>
+                <Paper style={{ padding: "40px", borderRadius:'10px', backgroundColor: "#498291", color:'#CAD2C5', marginTop:'175px'}} elevation={6}>
                 <Typography variant='h4' textAlign="center" style={typographyStyle}>
                             Verse of the Day:
                         </Typography>
@@ -69,12 +69,12 @@ function HeroSection() {
                 }}>
                 <Typography variant='h4' textAlign="center" marginBottom="20px" style={typographyStyle}>Bible Dashboard</Typography>
                 <Box display="flex" justifyContent="space-around" marginBottom="50px" xs={12} sm={10} md={8} lg={6}>
-                <Card image={bibleImg} alt="Bible image" title= "Bible" description="Explore our awesome Bible API" path='/bible'/>
-                <Card image={sermonImg} alt="Memory Scriptures image" title= "Memory Scriptures" description="Keep the Word in your heart" path='/memory'/>
+                <Card image={bibleImg} alt="Bible image" title= "Bible" description="Discover the Word of God" path='/bible'/>
+                <Card image={sermonImg} alt="Memory Scriptures image" title= "Memory Scripture" description="Keep the Word in your heart" path='/memory'/>
                 </Box>
                 <Box display="flex" justifyContent="space-around"xs={12} sm={10} md={8} lg={6}>
                 <Card image={prayerImg} alt="Prayer image" title= "Prayer" description="Join with us in prayer."/>
-                <Card image={journalImg} alt="Journal image" title= "Journal" description="Take notes about your life." path='/journal'/>
+                <Card image={journalImg} alt="Journal image" title= "Journal" description="Jot down your thoughts" path='/journal'/>
                 </Box>
                 </Box>
             </Grid>
