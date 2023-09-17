@@ -40,6 +40,7 @@ function Memory() {
           </Typography>
           <Typography style={{textAlign: 'center'}}>
             <button class="cool-button">New Scripture</button>
+            <button class="cool-button">Add to Saved List</button>
           </Typography>
         </Paper>
       </Grid>
