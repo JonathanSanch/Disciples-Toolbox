@@ -32,6 +32,7 @@ function Memory() {
           </Typography>
           <Typography variant='h6' marginTop='15px'>
             <div>
+              {/* Hard coding current Memory Scripture. In the end, we want to get this from user. */}
               <p style={verseStyle}>All glory to God, who is able, through His mighty power at work within us, to accomplish
               infintely more than we might ask or think.</p>
             </div>
@@ -40,7 +41,7 @@ function Memory() {
             </div>
           </Typography>
           <Typography style={{textAlign: 'center'}}>
-            <button class="cool-button">New Scripture</button>
+            <button class="cool-button">New Scripture</button> 
             <button class="cool-button">Add to Saved List</button>
           </Typography>
         </Paper>
