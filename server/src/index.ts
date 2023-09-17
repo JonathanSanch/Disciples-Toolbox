@@ -195,11 +195,6 @@ const app = new Elysia()
 	}
 })	
 
-.get('/api2', () => 'Test Elysia')
-
-
-
-
 .listen(5000);
 
 
