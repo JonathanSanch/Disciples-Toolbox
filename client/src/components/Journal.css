@@ -8,3 +8,12 @@
     font-family: 'Ysabeau', sans-serif !important;
     color: black;
 }
+
+.jButt {
+    background: #3b6064 !important;
+}
+
+.journalEntries {
+    text-align: center;
+    list-style: none;
+}
