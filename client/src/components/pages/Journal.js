@@ -18,10 +18,8 @@ function Journal() {
         fetch("/journals").then(
             response => response.json()
         ).then(
-            
             data => {
-            setJournals(data)
-            console.log(data)
+                setJournals(data)
             }
         )
     }
@@ -105,6 +103,11 @@ function Journal() {
         .catch((error) => {
             console.error("Error deleting journal entry:", error);
         });
+        setInputValue("");
+        setJournalId('');
+        setDateTime(currentDateString);
+        setCreate(true);
+        getJournals();
     };
 
   return (
@@ -147,7 +150,7 @@ function Journal() {
                         <Container>
                             <ListItemButton className='listButton' style={{ display: 'flex', alignItems: 'flex-start' }} disableGutters="true" onClick={() => loadJournalEntry(index, item._id)}> {item.date} 
                         </ListItemButton>
-                        <IconButton edge="end" aria-label="comments" >
+                        <IconButton edge="end" aria-label="comments" onClick={() => deleteJournalEntry(item._id)}>
                             <Delete />
                         </IconButton>
                         </Container>
