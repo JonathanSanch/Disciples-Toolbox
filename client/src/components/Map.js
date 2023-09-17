@@ -1,29 +1,26 @@
-//AIzaSyBG_jpsINMmnfPnQfJEc8kol80b4rXs27E API KEY for Google map    
-
-import React from "react";
-import { useState, useEffect } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import React from 'react';
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import { useMemo } from 'react';
 
 // Define your Google Maps API key
-const apiKey = 'AIzaSyBG_jpsINMmnfPnQfJEc8kol80b4rXs27E';
+const apiKey1 = 'AIzaSyBG_jpsINMmnfPnQfJEc8kol80b4rXs27E';
 
-// Define the initial position for the map
-const initialPosition = { lat: 37.7749, lng: -122.4194 }; // San Francisco
+export default function Home() {
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: apiKey1,
+  });
 
-// Define your LocatorMap component
-function mapLocator() {
+  if (!isLoaded) return <div>Loading...</div>
+
   return (
-    <LoadScript googleMapsApiKey={apiKey}>
-      <GoogleMap
-        mapContainerStyle={{ width: '100%', height: '400px' }}
-        center={initialPosition}
-        zoom={10}
-      >
-        {/* Add a Marker to the map */}
-        <Marker position={initialPosition} />
-      </GoogleMap>
-    </LoadScript>
-  );
+      <Map />
+  )
 }
 
-export default mapLocator; 
+function Map() {
+  return <GoogleMap
+    zoom={10}
+    center={{ lat: 44, lng: -80 }}
+    mapContainerClassName="map-container"
+    ></GoogleMap>
+}
