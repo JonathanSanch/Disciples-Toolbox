@@ -121,9 +121,10 @@ function Memory() {
     console.log("I totally cleared it")
   }
 
-  const getRandomScripture = () => {
-    console.log("yuh");
-  }
+  const randomNumber = (min, max) => {
+    return Math.floor(Math.random() 
+        * (max - min + 1)) + min;
+    };
 
   return (
     <Grid container spacing={2}>
@@ -148,7 +149,7 @@ function Memory() {
                 <p></p>
             ): (
                 <div>
-                    <p style={verseStyle}>{memoryScriptures[(Math.floor(Math.random() * (memoryScriptures.length - 1 + 1)) + 1) - 1].text}</p>
+                    <p style={verseStyle}>{memoryScriptures[randomNumber(0, memoryScriptures.length-1)].text}</p>
                 </div>
             )}
           </Typography>
