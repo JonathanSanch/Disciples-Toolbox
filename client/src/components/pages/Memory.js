@@ -148,9 +148,7 @@ function Memory() {
             {(typeof memoryScriptures === 'undefined') ? (
                 <p></p>
             ): (
-                <div>
-                    <p style={verseStyle}>{memoryScriptures[randomNumber(0, memoryScriptures.length-1)].text}</p>
-                </div>
+                <p style={verseStyle}>Psalm 30:5 [5] For his anger is but for a moment, and his favor is for a lifetime. Weeping may tarry for the night, but joy comes with the morning. (ESV)</p>
             )}
           </Typography>
           <Typography style={{ textAlign: 'center' }}>
