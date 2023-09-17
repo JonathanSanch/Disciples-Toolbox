@@ -1,21 +1,21 @@
 // Authorization: Token c5d7d0f8da90d9a53978171558396b7400b9cba6
 // /v3/passage/text/ for plain text
 // curl -H 'Authorization: Token YOUR_API_KEY' 'https://api.esv.org/v3/passage/text/?q=John+11:35'
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { useState } from "react"
 import React from "react";
 
-import { Container, Typography, Paper, Pagination } from '@mui/material';
+
+import { Container, Typography, Paper, Pagination, TextField, Button, IconButton, Input } from '@mui/material';
 
 function Bible() {
   const [data, setData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const [bibleText, setBibleText] = useState("");
+  const [query, setQuery] = useState("John 1");
 
-    const [bibleText, setBibleText] = useState("");
+function ApiCall() {
   const apiKey = "c5d7d0f8da90d9a53978171558396b7400b9cba6"; // Replace with your ESV API key
-  useEffect(() => {
-    const apiUrl = `https://api.esv.org/v3/passage/text/?q=Genesis+1&include-footnotes=false&wrapping-div=true`;
+    const apiUrl = `https://api.esv.org/v3/passage/text/?q=${query}&include-footnotes=false&wrapping-div=true`;
     fetch(apiUrl, {
       headers: {
         Authorization: `Token ${apiKey}`,
@@ -31,40 +31,26 @@ function Bible() {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+}
+useEffect(() => {ApiCall()}, []);
 
+
+  //Handles new search for Bible pages
     // Calculate the range of items to display on the current page
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentData = data.slice(startIndex, endIndex);
 
-  const handlePageChange = (event, value) => {
-    setCurrentPage(value);
-  };
-  // useEffect(() => {
-  //   // Fetch data from the API
-  //   axios
-  //     .get('https://jsonplaceholder.typicode.com/posts')
-  //     .then((response) => {
-  //       setData(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching data:', error);
-  //     });
-  // }, []);
+const inputRef = useRef();
 
-  // // Calculate the range of items to display on the current page
-  // const startIndex = (currentPage - 1) * itemsPerPage;
-  // const endIndex = startIndex + itemsPerPage;
-  // const currentData = data.slice(startIndex, endIndex);
+function OnSubmit(e){
+  e.preventDefault();
 
-  // const handlePageChange = (event, value) => {
-  //   setCurrentPage(value);
-  // };
+  setQuery(inputRef.current.value)
+  ApiCall();
+}
 
+  console.log(query)
   return (
     <Container maxWidth="md">
-      <Paper style={{ padding: '20px' }} width="200px">
+      <Paper style={{ padding: '20px', marginBottom: "30px", marginTop: "30px", alignItems:'center', backgroundColor:"#CAD2C5" }} width="200px" >
       {(typeof bibleText === 'undefined') ? (
           <Typography></Typography>
       ): (
@@ -72,24 +58,35 @@ function Bible() {
         <Typography variant="h4" gutterBottom textAlign="center">
           {bibleText.query}
         </Typography>
-        <Typography variant="h6"  gutterBottom >
+        <Typography variant="h6"  gutterBottom padding="20px" >
           {bibleText.passages}
         </Typography>
       </div>
         )}
-
-        <ul>
-          {currentData.map((item) => (
-            <li key={bibleText.id}>{bibleText.passages[0]}</li>
-          ))}
-        </ul>
-
-        <Pagination
-          count={Math.ceil(data.length / itemsPerPage)}
-          page={currentPage}
-          onChange={handlePageChange}
-          value={bibleText.parsed}
-        />
+          <div>
+            <form onSubmit={OnSubmit} style={{display:'flex'}}>
+              <div class="input-group mb-3">
+                <span className="input-group-text" id="inputGroup-sizing-default">
+                <input ref={inputRef} style={{width:"300px", backgroundColor:"#CAD2C5", height:"20px", outlineColor:"#CAD2C5", padding:"15px", margin:"20px"}} placeholder="Type Chapter"/>
+                </span>
+              <Button type="submit" variant="outlined">Search</Button>
+              </div>
+          {/* <Input
+          fullWidth
+          label="Search"
+          variant="outlined"
+          ref={inputRef} type='text'
+          />
+        <Button
+        type="submit"
+          variant="contained"
+          color="primary"
+          style={{ marginLeft: '8px' }}>
+          Search
+        </Button> */}
+        </form>
+      </div>
+        
       </Paper>
     </Container>
   );
