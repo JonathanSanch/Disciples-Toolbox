@@ -17,7 +17,7 @@ connectToDatabase(); // Call the async function to connect
 // Schemas
 const journalModel = mongoose.model('journals', { date: String, text: String });
 const prayerModel = mongoose.model('prayers', { title: String, date: String, text: String });
-const memoryScriptureModel = mongoose.model('memoryScriptures', { book: String, chapter: String, startVerse: String, endVerse: String, text: String });
+const memoryScriptureModel = mongoose.model('memoryScriptures', { book: String, chapter: String, startVerse: String, endVerse: String, text: String, memorized: Boolean});
 
 
 
