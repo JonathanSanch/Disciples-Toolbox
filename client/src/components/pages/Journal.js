@@ -8,54 +8,100 @@ import "../Journal.css"
 
 
 function Journal() {
-    const [items, setItems] = useState([]); // Initialize an empty array to store items
-    const [inputValue, setInputValue] = useState(''); // Initialize an empty string for input value
-
-    const addItemToList = () => {
-        if (inputValue.trim() !== '') {
-          // Check if the input value is not empty
-          setItems([...items, inputValue]); // Append the input value to the list
-          setInputValue(''); // Clear the input field
-        }
-      };
-    
-      const handleDelete = (deleteJournal) => {
-
-        const updatedItems = items.filter((item, index) => index !== deleteJournal);
-        setItems(updatedItems);
-      }
-
-      //Getting Date
-      const currentDate = new Date();
-      const currentDateString = currentDate.toLocaleDateString(undefined);
-
+    const [inputValue, setInputValue] = useState('');
+    const currentDate = new Date();
+    const currentDateString = currentDate.toLocaleString(undefined);
     const [journals, setJournals] = useState([{}]);
-    useEffect(() => {
-    fetch("/journals").then(
-        response => response.json()
-    ).then(
-        data => {
-        setJournals(data)
-        }
-    )
-    }, [])
+    const getJournals = () => {
+        fetch("/journals").then(
+            response => response.json()
+        ).then(
+            data => {
+            setJournals(data)
+            }
+        )
+    }
 
+    useEffect(() => {getJournals()}, [])
 
     const [create, setCreate] = useState(true);
     const createJournalEntry = () => {
         if (create) {
-            if (inputValue.trim() !== '') {
-                // Check if the input value is not empty
-                setItems([...items, inputValue]); // Append the input value to the list
-                setInputValue(''); // Clear the input field
-                setCreate(!create)
+            let data = {
+                "date": currentDateString,
+                "text": inputValue
             }
+            fetch("/journals", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            .then((response) => {
+                if (!response.ok) {
+                throw new Error("Failed to add journal entry");
+                }
+                console.log("Journal entry added successfully");
+                setInputValue('');
+                getJournals();
+            })
+            .catch((error) => {
+                console.error("Error adding journal entry:", error);
+            });
         }
+    }
+
+    const [journalId, setJournalId] = useState('');
+    const loadJournalEntry = (index, id) => {
+        setCreate(false);
+
+        if (typeof journals != 'undefined') {
+            setInputValue(journals[index].text);
+            setJournalId(id);
+        }
+    }
+
+    const editJournalEntry = () => {
+        fetch(`/journals/${journalId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({text: inputValue}),
+            })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to update journal entry");
+                }
+            console.log("Journal entry updated successfully");
+        })
+        .catch((error) => {
+            console.error("Error updating journal entry:", error);
+        });
+        getJournals();
+    }
+
+    const deleteJournalEntry = (id) => {
+        const instanceId = id;
+  
+        // Send the DELETE request
+        fetch(`/journals/${instanceId}`, {
+            method: "DELETE",
+            params: instanceId
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Failed to delete journal entry");
+            }
+            console.log("Journal entry deleted successfully");
+        })
+        .catch((error) => {
+            console.error("Error deleting journal entry:", error);
+        });
     };
 
-
   return (
-    
     <Container maxWidth="xl">
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
@@ -65,8 +111,8 @@ function Journal() {
             size="large"
             style={{ marginTop: '10px' }}
             fullWidth
-            onClick={createJournalEntry}>
-            {(create === true) ? ( <>Create Your Journal</>): (<>Edit Your Journal</>)}
+            onClick={(create === true) ? (createJournalEntry): (editJournalEntry)}>
+            {(create === true) ? ( <>Create A Journal Entry</>): (<>Edit Your Journal Entry</>)}
         </Button>
 
         <Paper style={{ padding: '20px' , backgroundColor:"#CAD2C5"}}>
@@ -91,7 +137,7 @@ function Journal() {
             ): (
                 <ul>
                     {journals.map((item, index) => (
-                        <Button><li key={index}>{item.date}</li></Button> // Replace "name" with the key in your API response
+                        <li key={index}><Button onClick={() => loadJournalEntry(index, item._id)}>{item.date}</Button></li>
                     ))}
                 </ul>
             )}
