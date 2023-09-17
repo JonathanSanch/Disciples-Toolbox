@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import {
-  Grid,
-  Paper,
-  Typography,
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  TextField,
-} from '@mui/material';
-import '../../App.css';
+import React from 'react'
+import '../../App.css'
+import Grid from "@mui/material/Grid"
+import { Paper, Typography } from '@mui/material'
 import './Memory.css';
 import Listbox from '../Listbox.js';
 
 function Memory() {
+
   const typographyStyle = {
     fontFamily: 'Fugaz One', // Replace with your selected font family
     marginBottom: '10px',
@@ -126,22 +118,13 @@ function Memory() {
   }
 
   return (
+
     <Grid container spacing={2}>
       {/* Left Column */}
       <Grid item xs={12} md={6}>
-        <Paper
-          style={{
-            minHeight: '200px',
-            borderRadius: '10px',
-            padding: '40px',
-            backgroundColor: '#594157',
-            color: '#d0a4eb',
-            margin: '45px',
-          }}
-          elevation={6}
-        >
-          <Typography variant="h4" textAlign="center" style={typographyStyle}>
-            Memory Scripture:
+        <Paper style={{ minHeight:'200px', borderRadius:'10px', padding: "40px", backgroundColor: "#594157", color:'#d0a4eb', margin:'45px'}} elevation={6}>
+          <Typography variant='h4' textAlign="center" style={typographyStyle}>
+              Memory Scripture:
           </Typography>
           <Typography variant="h6" marginTop="15px">
             {(typeof memoryScriptures === 'undefined') ? (
@@ -157,9 +140,9 @@ function Memory() {
           </Typography>
         </Paper>
       </Grid>
-      {/* Right Column */}
+    {/* Right Column */}
       <Grid item xs={12} md={6}>
-      <Paper elevation={3} style={{ minHeight:'200px', borderRadius:'10px', backgroundColor:'#d0a4eb', color:'#594157', padding: '40px', margin: '45px' }}>
+        <Paper elevation={3} style={{ minHeight:'200px', borderRadius:'10px', backgroundColor:'#d0a4eb', color:'#594157', padding: '40px', margin: '45px' }}>
           <Typography variant='h4' textAlign="center" style={typographyStyle}>
               Saved List:
               <button onClick={clearList} class="cool-button-2">Clear list</button>
@@ -221,7 +204,8 @@ function Memory() {
         </DialogActions>
       </Dialog>
     </Grid>
-  );
+
+  )
 }
 
 export default Memory;
