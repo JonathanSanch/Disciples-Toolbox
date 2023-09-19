@@ -31,7 +31,7 @@ Despite these challenges, we're incredibly proud of what we've accomplished. We'
 ## Authors
 
 - Jonathan Sanchez - [@JonathanSanch](https://github.com/JonathanSanch) 
--  Lucas Vlas - [@LucasTree2](https://github.com/LucasTree2)
+-  Lucas Vlad - [@LucasVlad](https://github.com/LucasVlad)
 - Zino Ebiala - [@DavidEbiala](https://github.com/DavidEbiala)
 - David Kennedy - [@DK3N](https://github.com/DK3N)
 
